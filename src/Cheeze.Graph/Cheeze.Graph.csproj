@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="10.3.1" />
+    <PackageReference Include="HotChocolate.AspNetCore.Playground" Version="10.3.1" />
+    <PackageReference Include="HotChocolate.AspNetCore.Voyager" Version="10.3.1" />
+    <PackageReference Include="HotChocolate.AspNetCore.Authorization" Version="10.3.1" />
+    <PackageReference Include="HotChocolate.Types.Filters" Version="10.3.1" />
+    <PackageReference Include="HotChocolate.Types.Sorting" Version="10.3.1" />
+    <PackageReference Include="HotChocolate.Subscriptions.InMemory" Version="10.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cheeze.Store.Client\Cheeze.Store.Client.csproj" />
+    <ProjectReference Include="..\Cheeze.Inventory.Client\Cheeze.Inventory.Client.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  cheeze.store:
+    image: ${DOCKER_REGISTRY-}cheezestore
+    build:
+      context: .
+      dockerfile: Cheeze.Store/Dockerfile
+
+  cheeze.inventory:
+    image: ${DOCKER_REGISTRY-}cheezeinventory
+    build:
+      context: .
+      dockerfile: Cheeze.Inventory/Dockerfile
+
+  cheeze.graph:
+    image: ${DOCKER_REGISTRY-}cheezegraph
+    build:
+      context: .
+      dockerfile: Cheeze.Graph/Dockerfile
+    ports:
+      - "8081:80"
+    environment:
+      - Cheeze__Graph__Store__BaseAddress=http://cheeze.store
+      - Cheeze__Graph__Inventory__BaseAddress=http://cheeze.inventory
+    depends_on:
+      - cheeze.store
+      - cheeze.inventory
